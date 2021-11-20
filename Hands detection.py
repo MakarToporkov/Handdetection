@@ -18,25 +18,24 @@ while True:
 
     if results.multi_hand_landmarks:
         for handLms in results.multi_hand_landmarks:
-            pointsX =[]
-            pointsY =[]
+            pointsX =[]#создание массива
+            pointsY =[]#создание массива
             for id, lm in enumerate(handLms.landmark):
                 h, w, c = img.shape
                 cx, cy = int(lm.x*w), int(lm.y*h)
                 pointsX.append(cx)
                 pointsY.append(cy)
-                #print(id, cx, cy)
-                #cv2.circle(img, (cx, cy), 7, (255, 0, 0), cv2.FILLED)
-            minX = min(pointsX) - (min(pointsX))*0.01
-            minY = min(pointsY) - (min(pointsY))*0.01
-            maxX = max(pointsX) + (max(pointsX))*0.01
-            maxY = max(pointsY) + (max(pointsY))*0.01
-            # X1 = minX - minX * 0.1
-            # Y1 = minY - minY * 0.1
-            # X2 = maxX + maxX * 0.1
-            # Y2 = maxY + maxY * 0.1
-            # cv2.rectangle(img, ( X1, Y1), (X2, Y2), (255, 0 ,0))
-            cv2.rectangle(img, ( minX, minY), (maxX, maxY), (255, 0 ,0))
+        
+            # minX = min(pointsX) - int((min(pointsX))*0.12)попытка отступов
+            # minY = min(pointsY) - int((min(pointsY))*0.08)попытка отступов
+            # maxX = max(pointsX) + int((max(pointsX))*0.03)попытка отступов
+            # maxY = max(pointsY) + int((max(pointsY))*0.01)попытка отступов
+            minX = min(pointsX) #создание переменной для нахождения минимального значения массива по оси Х
+            minY = min(pointsY) #создание переменной для нахождения минимального значения массива по оси Y
+            maxX = max(pointsX) #создание переменной для нахождения максимального значения массива по оси Х
+            maxY = max(pointsY) #создание переменной для нахождения максимаоьного значения массива по оси Y
+
+            cv2.rectangle(img, ( minX, minY), (maxX, maxY), (255, 0 ,0))#построение прямоугольника по минимальным и максимальным точкам
                 
 
             mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)
