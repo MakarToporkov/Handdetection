@@ -4,7 +4,7 @@ import mediapipe as mp
 import time
 from PIL import Image
 import matplotlib.pyplot as plt
-#cap = cv2.VideoCapture(0)
+
 
 mpHands = mp.solutions.hands
 hands = mpHands.Hands()
@@ -12,25 +12,8 @@ hands = mpHands.Hands()
 mpDraw = mp.solutions.drawing_utils
 
 
-
-'''size = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)),\
-        int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-
-vidwrite = cv2.VideoWriter('testvideo.avi', cv2.VideoWriter_fourcc,size,True)
-
-
-# Write and show recording
-while cap.isOpened():
-
-        _, frame =  cap.read()
-        vidwrite.write(frame)
-
-        cv2.imshow("showlive", frame)
-        cv2.waitKey(1)'''
-
-
 while True:
-            success, img = cap.read()
+            success, img = ("C:\Users\m.Toporkov\res.avi")
             imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             results = hands.process(imgRGB)
 
@@ -61,26 +44,6 @@ while True:
 
             cv2.imshow("Image", img)
             cv2.waitKey(1)
-
-
-
-        
-
-    
-
-
-
-
-
-
-
-
-"""for i in range(1, 192):
-  if 'zip' not in imgs_for_convertation[i] and 'json' not in imgs_for_convertation[i]:
-    image_file = np.asarray(Image.open(os.path.join(train_data_dir, imgs_for_convertation[i])))
-    image_file = np.resize(image_file, 224*224*1)
-    #print(i)
-    images[i] = image_file"""
 
 
 
