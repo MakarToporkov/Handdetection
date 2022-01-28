@@ -6,14 +6,30 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 
-mpHands = mp.solutions.hands
+cap = cv2.VideoCapture("res.avi")
+ret, frame = cap.read()
+while(1):
+   ret, frame = cap.read()
+   cv2.imshow('frame',frame)
+   if cv2.waitKey(1) & 0xFF == ord('q') or ret==False :
+       cap.release()
+       cv2.destroyAllWindows()
+       break
+   cv2.imshow('frame',frame)
+
+
+
+
+
+
+'''mpHands = mp.solutions.hands
 hands = mpHands.Hands()
 
 mpDraw = mp.solutions.drawing_utils
 
 
 while True:
-            success, img = ("C:\Users\m.Toporkov\res.avi")
+            success, img = cap.read()
             imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             results = hands.process(imgRGB)
 
@@ -39,11 +55,11 @@ while True:
                     cv2.rectangle(img, ( minX, minY), (maxX, maxY), (255, 0 ,0))#построение прямоугольника по минимальным и максимальным точкам
 
 
-                mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)
+                mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)'''
 
 
-            cv2.imshow("Image", img)
-            cv2.waitKey(1)
+#cv2.imshow("Image", img)
+           # cv2.waitKey(1)
 
 
 
