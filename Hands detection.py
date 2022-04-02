@@ -1,10 +1,21 @@
-import numpy as np
 import cv2
 import mediapipe as mp
 import time
-from PIL import Image
 import matplotlib.pyplot as plt
 
+import cv2
+
+cap = cv2.VideoCapture(0)
+
+'''while(1): 
+    ret, frame = cap.read()
+    cv2.imshow('video',frame)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+
+cap.release()
+cv2.destroyAllWindows()'''
 
 cap = cv2.VideoCapture("res.avi")
 ret, frame = cap.read()
@@ -15,6 +26,7 @@ while(1):
        cap.release()
        cv2.destroyAllWindows()
        break
+
    cv2.imshow('frame',frame)
 
 
