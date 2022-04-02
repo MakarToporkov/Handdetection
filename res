@@ -11,15 +11,13 @@ fps = 20.0
 image_size = (640,480)
 video_file = 'res.avi'
 
-# Check if the webcam is opened correctly
-if not cap.isOpened():
-    raise IOError("Cannot open webcam")
+
 out = cv2.VideoWriter(video_file, cv2.VideoWriter_fourcc(*'XVID'), fps, image_size)
 i = 0;
 while True:
     ret, frame = cap.read()
     out.write(frame)
-    time.sleep(0.0)
+    time.sleep(0.05)
     i = i + 1
     if i > 1000:
         break;
@@ -27,5 +25,27 @@ while True:
 cap.release()
 cv2.destroyAllWindows()
 
-print("Successfully saved")
+
+'''import cv2 as cv
+ 
+
+ # Скриншот изображения
+def cutVideo():
+    i = 0
+    video = cv.VideoCapture ('video.avi') # читать видеофайл
+    while(True):
+        ret,frame = video.read()
+        cv.imshow('video',frame)
+        c = cv.waitKey(50)
+        if c == 27:
+            break
+        i=i+1
+        if i%5==0:
+            cv.imwrite('D:\\save\\'+str(i)+'.png',frame)
+ 
+ 
+cutVideo()
+cv.destroyAllWindows()'''
                 
+
+
